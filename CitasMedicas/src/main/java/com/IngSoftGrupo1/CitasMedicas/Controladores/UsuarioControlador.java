@@ -43,5 +43,16 @@ public class UsuarioControlador {
     public void deleteUsuario(@PathVariable long id) {
         usuariosService.deleteUsuario(id);
     }
+    
+    @PostMapping("/login")
+    public String loginUsuario(@RequestParam String correo, @RequestParam String contrasenia) {
+        Optional<Usuarios> usuarioAutenticado = usuariosService.autenticarUsuario(correo, contrasenia);
+
+        if (usuarioAutenticado.isPresent()) {
+            return "Inicio de sesión exitoso para el usuario: " + usuarioAutenticado.get().getNom_usuarios();
+        } else {
+            return "Credenciales incorrectas. Inicio de sesión fallido.";
+        }
+    }
 
 }

@@ -43,4 +43,8 @@ public class UsuarioService {
     public void deleteUsuario(long id) {
     	usuariosRepositorio.deleteById(id);
     }
+    
+    public Optional<Usuarios> autenticarUsuario(String correo, String contrasenia) {
+        return usuariosRepositorio.findByCorreoAndContrasenia(correo, contrasenia);
+    }
 }
