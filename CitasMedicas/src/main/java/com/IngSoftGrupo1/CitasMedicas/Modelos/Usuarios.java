@@ -89,6 +89,13 @@ public class Usuarios {
 		this.direccion = direccion;
 	}
 	
+	@Override
+	public String toString() {
+		return "Usuarios [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol
+				+ ", nom_usuarios=" + nom_usuarios + ", cedula=" + cedula + ", contrasenia=" + contrasenia
+				+ ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + "]";
+	}
+	
 	
 	
 		
