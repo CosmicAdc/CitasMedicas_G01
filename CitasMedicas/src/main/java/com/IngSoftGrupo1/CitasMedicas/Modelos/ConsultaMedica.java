@@ -10,7 +10,7 @@ public class ConsultaMedica {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; 
+    private long id; 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "citamedica_id", referencedColumnName = "id")
@@ -25,17 +25,17 @@ public class ConsultaMedica {
     }
 
     // Constructor con todos los parámetros
-    public ConsultaMedica(int id, CitaMedica citamedica) {
+    public ConsultaMedica(long id, CitaMedica citamedica) {
         this.id = id;
         this.citamedica = citamedica;
         //this.medicina = medicina;
     }
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

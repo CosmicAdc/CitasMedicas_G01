@@ -10,7 +10,7 @@ public class HistoriaClinica {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; 
+    private long id; 
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -27,11 +27,11 @@ public class HistoriaClinica {
         this.consultamedica = consultamedica;
     }
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
