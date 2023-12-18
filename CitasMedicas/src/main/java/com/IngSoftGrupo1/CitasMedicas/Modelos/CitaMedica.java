@@ -9,7 +9,7 @@ public class CitaMedica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long citaId; // Actualizado a camelCase
+    private long id; // Actualizado a camelCase
 
     @Column(name = "fecha", columnDefinition = "TIMESTAMP")
     private Timestamp fecha;
@@ -27,8 +27,8 @@ public class CitaMedica {
     }
 
     // Constructor con todos los parámetros
-    public CitaMedica(long citaId, Timestamp fecha, Usuarios paciente, Medico medico) {
-        this.citaId = citaId;
+    public CitaMedica(long id, Timestamp fecha, Usuarios paciente, Medico medico) {
+        this.id = id;
         this.fecha = fecha;
         this.paciente = paciente;
         this.medico = medico;
@@ -36,11 +36,11 @@ public class CitaMedica {
 
     // Getters y setters
     public long getCitaId() {
-        return citaId;
+        return id;
     }
 
-    public void setCitaId(long citaId) {
-        this.citaId = citaId;
+    public void setCitaId(long id) {
+        this.id = id;
     }
 
     public Timestamp getFecha() {
@@ -71,7 +71,7 @@ public class CitaMedica {
     @Override
     public String toString() {
         return "CitaMedica{" +
-                "citaId=" + citaId +
+                "citaId=" + id +
                 ", fecha=" + fecha +
                 ", paciente=" + (paciente != null ? paciente.getId() : null) +
                 ", medico=" + (medico != null ? medico.getId() : null) +
