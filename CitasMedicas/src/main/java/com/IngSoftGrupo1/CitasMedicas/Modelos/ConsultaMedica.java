@@ -1,6 +1,5 @@
 package com.IngSoftGrupo1.CitasMedicas.Modelos;
 
-import java.sql.Timestamp;
 
 import jakarta.persistence.*;
 
