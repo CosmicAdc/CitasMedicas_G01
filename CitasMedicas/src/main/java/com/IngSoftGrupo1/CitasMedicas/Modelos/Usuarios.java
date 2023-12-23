@@ -95,12 +95,4 @@ public class Usuarios {
 				+ ", nom_usuarios=" + nom_usuarios + ", cedula=" + cedula + ", contrasenia=" + contrasenia
 				+ ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + "]";
 	}
-	
-	
-	
-		
-	
-	
-	
-
 }
