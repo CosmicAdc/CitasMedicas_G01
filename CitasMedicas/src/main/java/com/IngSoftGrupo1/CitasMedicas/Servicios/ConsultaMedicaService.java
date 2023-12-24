@@ -23,27 +23,26 @@ public class ConsultaMedicaService {
         this.consultamedicaRepositorio = consultamedicaRepositorio;
     }
 
-    @Transactional(readOnly = true)
     public List<ConsultaMedica> getAllConsultas() {
         return consultamedicaRepositorio.findAll();
     }
 
-    @Transactional(readOnly = true)
     public Optional<ConsultaMedica> getConsultaMedicaById(long id) {
         return consultamedicaRepositorio.findById(id);
     }
 
-    public ConsultaMedica saveConsultaMedica(ConsultaMedica consultamedica) {
+    public ConsultaMedica createConsultaMedica(ConsultaMedica consultamedica) {
         return consultamedicaRepositorio.save(consultamedica);
     }
 
-    @Transactional
+    
     public ConsultaMedica updateConsultaMedica(long id, ConsultaMedica consultamedicaDetails) {
     	ConsultaMedica consultamedica = consultamedicaRepositorio.findById(id)
                 .orElseThrow(() -> new IllegalStateException("Consulta Medica with id " + id + " does not exist"));
         
         consultamedica.setCitamedica(consultamedicaDetails.getCitamedica());
-        //medicina get
+        consultamedica.setReceta(consultamedicaDetails.getReceta());
+        consultamedica.setDiagnostico(consultamedicaDetails.getDiagnostico());
         return consultamedicaRepositorio.save(consultamedica);
     }
 
