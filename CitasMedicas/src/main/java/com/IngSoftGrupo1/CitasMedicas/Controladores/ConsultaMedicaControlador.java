@@ -31,14 +31,12 @@ public class ConsultaMedicaControlador {
 	        this.consultamedicaservice = consultamedicaservice;
 	    }
 
-	    @Transactional(readOnly = true)
 	    @GetMapping
 	    public ResponseEntity<List<ConsultaMedica>> getAllConsultaMedica() {
 	        List<ConsultaMedica> consultas = consultamedicaservice.getAllConsultas();
 	        return ResponseEntity.ok(consultas);
 	    }
 
-	    @Transactional(readOnly = true)
 	    @GetMapping("/{id}")
 	    public ResponseEntity<ConsultaMedica> getConsultaMedicaById(@PathVariable long id) {
 	        Optional<ConsultaMedica> consulta = consultamedicaservice.getConsultaMedicaById(id);
@@ -48,7 +46,7 @@ public class ConsultaMedicaControlador {
 
 	    @PostMapping
 	    public ResponseEntity<ConsultaMedica> createConsultaMedica(@RequestBody ConsultaMedica consultamedica) {
-	    	ConsultaMedica nuevoConsulta = consultamedicaservice.saveConsultaMedica(consultamedica);
+	    	ConsultaMedica nuevoConsulta = consultamedicaservice.createConsultaMedica(consultamedica);
 	        return ResponseEntity.ok(nuevoConsulta);
 	    }
 

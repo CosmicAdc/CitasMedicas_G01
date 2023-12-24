@@ -13,45 +13,81 @@ public class ConsultaMedica {
     private long id; 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "citamedica_id", referencedColumnName = "id")
+    @JoinColumn(name = "citamedica_id")
     private CitaMedica citamedica;
 
-    //@ManyToOne(fetch = FetchType.EAGER)
-   // @JoinColumn(name = "medicina_id", referencedColumnName = "id")
-    //private Medicina medicina;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "re_id")
+    private Receta receta;
  
-    // Constructor vacío
-    public ConsultaMedica() {
-    }
+    @Column(name = "diagnostico")
+    private String diagnostico;
 
     // Constructor con todos los parámetros
-    public ConsultaMedica(long id, CitaMedica citamedica) {
+    public ConsultaMedica(long id, CitaMedica citamedica, Receta receta, String diagnostico) {
         this.id = id;
         this.citamedica = citamedica;
-        //this.medicina = medicina;
+        this.receta = receta;
+        this.diagnostico = diagnostico;
     }
+
+
 
 	public long getId() {
 		return id;
 	}
 
+
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
+
 
 	public CitaMedica getCitamedica() {
 		return citamedica;
 	}
 
+
+
 	public void setCitamedica(CitaMedica citamedica) {
 		this.citamedica = citamedica;
 	}
-    
+
+
+
+	public Receta getReceta() {
+		return receta;
+	}
+
+
+
+	public void setReceta(Receta receta) {
+		this.receta = receta;
+	}
+
+
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+
+
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+
+
 	@Override
     public String toString() {
         return "ConsultaMedica{" +
                 "consultaId=" + id +
                 ", citamedica=" + (citamedica != null ? citamedica.getCitaId() : null) +
+                ", receta=" + (receta != null ? receta.getRe_id() : null) +
+                ", diagnostico=" + diagnostico +
                 '}';
     }
 }

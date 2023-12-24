@@ -5,11 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.IngSoftGrupo1.CitasMedicas.Modelos.ConsultaMedica;
 import com.IngSoftGrupo1.CitasMedicas.Modelos.HistoriaClinica;
-import com.IngSoftGrupo1.CitasMedicas.Repositorios.ConsultaMedicaRepositorio;
 import com.IngSoftGrupo1.CitasMedicas.Repositorios.HistoriaClinicaRepositorio;
 
 @Service
@@ -23,21 +19,18 @@ private final HistoriaClinicaRepositorio historiaclinicaRepositorio;
         this.historiaclinicaRepositorio = historiaclinicaRepositorio;
     }
 
-    @Transactional(readOnly = true)
     public List<HistoriaClinica> getAllHistorias() {
         return historiaclinicaRepositorio.findAll();
     }
 
-    @Transactional(readOnly = true)
     public Optional<HistoriaClinica> getHistoriaClinicaById(long id) {
         return historiaclinicaRepositorio.findById(id);
     }
 
-    public HistoriaClinica saveHistoriaClinica(HistoriaClinica historiaclinica) {
+    public HistoriaClinica createHistoriaClinica(HistoriaClinica historiaclinica) {
         return historiaclinicaRepositorio.save(historiaclinica);
     }
 
-    @Transactional
     public HistoriaClinica updateHistoriaClinica(long id, HistoriaClinica historiaclinicaDetails) {
     	HistoriaClinica historiaclinica = historiaclinicaRepositorio.findById(id)
                 .orElseThrow(() -> new IllegalStateException("Historia Clinica with id " + id + " does not exist"));
@@ -53,5 +46,5 @@ private final HistoriaClinicaRepositorio historiaclinicaRepositorio;
             throw new IllegalStateException("Historia Clinica  with id " + id + " does not exist");
         }
         historiaclinicaRepositorio.deleteById(id);
-}
+    }
 }
