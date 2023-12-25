@@ -28,6 +28,23 @@ public class Usuarios {
 	private String correo;
 	private String direccion;
 	
+    public Usuarios() {
+    }
+    
+	public Usuarios(long id, String nombre, String apellido, int rol, String nom_usuarios, String cedula,
+			String contrasenia, String telefono, String correo, String direccion) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.rol = rol;
+		this.nom_usuarios = nom_usuarios;
+		this.cedula = cedula;
+		this.contrasenia = contrasenia;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.direccion = direccion;
+	}
 	public long getId() {
 		return id;
 	}
