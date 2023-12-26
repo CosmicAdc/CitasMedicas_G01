@@ -23,6 +23,11 @@ public class ConsultaMedica {
     @Column(name = "diagnostico")
     private String diagnostico;
 
+    
+    
+    public ConsultaMedica() {
+    	
+    }
     // Constructor con todos los parámetros
     public ConsultaMedica(long id, CitaMedica citamedica, Receta receta, String diagnostico) {
         this.id = id;
