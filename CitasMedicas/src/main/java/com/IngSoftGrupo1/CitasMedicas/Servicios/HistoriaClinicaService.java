@@ -43,7 +43,7 @@ private final HistoriaClinicaRepositorio historiaclinicaRepositorio;
     public void deleteHistoriaClinica(long id) {
 
         if (!historiaclinicaRepositorio.existsById(id)) {
-            throw new IllegalStateException("Historia Clinica  with id " + id + " does not exist");
+            throw new IllegalStateException("Historia Clinica with id " + id + " does not exist");
         }
         historiaclinicaRepositorio.deleteById(id);
     }

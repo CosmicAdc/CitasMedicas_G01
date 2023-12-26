@@ -18,7 +18,21 @@ public class Medicamento {
     @Column(name = "medica_nombre")
     private String medica_nombre;
 
-    // Getters y setters
+    
+	public Medicamento() {
+	    	
+	    }
+	
+	
+    
+    public Medicamento(Long medica_id, String medica_nombre) {
+		this.medica_id = medica_id;
+		this.medica_nombre = medica_nombre;
+	}
+
+
+
+	// Getters y setters
     public Long getMedica_id() {
         return medica_id;
     }

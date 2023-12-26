@@ -24,6 +24,10 @@ public class HistoriaClinica {
     @Column(name = "fechacreacion", columnDefinition = "TIMESTAMP")
     private Timestamp fechacreacion;
     
+	public HistoriaClinica() {
+	    	
+	    }
+    
     public HistoriaClinica(int id, Usuarios paciente, ConsultaMedica consultamedica, Timestamp fechacreacion) {
         this.id = id;
         this.paciente = paciente;

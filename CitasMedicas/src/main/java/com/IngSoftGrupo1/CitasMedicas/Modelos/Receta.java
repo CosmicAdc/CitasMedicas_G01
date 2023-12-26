@@ -18,8 +18,19 @@ public class Receta {
     @Column(name = "re_indicaciones", nullable = false) // Asumiendo que siempre quieres una indicación.
     private String re_indicaciones;
     
+	
+	public Receta() {
+	    	
+	    }
+	
+    
+    public Receta(Long re_id, String re_indicaciones) {
+		this.re_id = re_id;
+		this.re_indicaciones = re_indicaciones;
+	}
 
-    // Getters y setters
+
+	// Getters y setters
     public Long getRe_id() {
         return re_id;
     }
