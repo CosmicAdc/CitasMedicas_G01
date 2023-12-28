@@ -94,5 +94,4 @@ class CitaMedicaTest {
         verify(citaMedicaRepositorio, times(1)).deleteById(id);
     }
 
-    // Aquí puedes agregar más pruebas para cubrir otros casos y métodos
 }
