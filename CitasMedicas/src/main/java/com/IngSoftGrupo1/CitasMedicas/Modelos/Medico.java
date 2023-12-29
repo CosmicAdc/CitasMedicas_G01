@@ -28,13 +28,34 @@ public class Medico {
 
     @Column(name = "turnoFin", columnDefinition = "TIMESTAMP")
     private Timestamp turnoFin;
+      
 
     // Relación con la entidad Usuarios
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usu_id", referencedColumnName = "id")
     private Usuarios usuario;
+    
+    
 
-    // Getters y setters
+    public Medico() {
+		
+	}
+
+    
+
+    public Medico(long id, String especializacion, String sexo, String direccion, String correo, Timestamp turnoInicio,
+			Timestamp turnoFin, Usuarios usuario) {
+		this.id = id;
+		this.especializacion = especializacion;
+		this.sexo = sexo;
+		this.direccion = direccion;
+		this.correo = correo;
+		this.turnoInicio = turnoInicio;
+		this.turnoFin = turnoFin;
+		this.usuario = usuario;
+	}
+
+	// Getters y setters
 
     public long getId() {
         return id;

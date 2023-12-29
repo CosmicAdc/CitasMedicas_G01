@@ -13,6 +13,8 @@ import org.mockito.MockitoAnnotations;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -92,6 +94,56 @@ class CitaMedicaTest {
         citaMedicaService.deleteCita(id);
 
         verify(citaMedicaRepositorio, times(1)).deleteById(id);
+    }
+    
+    @Test
+    void testGetCitasByPacienteId() {
+        long pacienteId = 1L;
+        List<CitaMedica> citasMedicas = Arrays.asList(
+                new CitaMedica(1L, Timestamp.valueOf(LocalDateTime.now()), new Usuarios(pacienteId, "Paciente1", "Apellido1", 1, "NomUsuario1", "Cedula1", "Contraseña1", "Telefono1", "Correo1", "Direccion1"), new Medico()),
+                new CitaMedica(2L, Timestamp.valueOf(LocalDateTime.now()), new Usuarios(pacienteId, "Paciente2", "Apellido2", 1, "NomUsuario2", "Cedula2", "Contraseña2", "Telefono2", "Correo2", "Direccion2"), new Medico())
+        );
+
+        when(citaMedicaRepositorio.findByPaciente_Id(pacienteId)).thenReturn(citasMedicas);
+
+        List<CitaMedica> result = citaMedicaService.getCitasByPacienteId(pacienteId);
+
+        assertEquals(2, result.size());
+        assertEquals(pacienteId, result.get(0).getPaciente().getId());
+        assertEquals(pacienteId, result.get(1).getPaciente().getId());
+    }
+    
+    @Test
+    void testGetCitasByMedicoId() {
+        long medicoId = 1L;
+        List<CitaMedica> citasMedicas = Arrays.asList(
+                new CitaMedica(1L, Timestamp.valueOf(LocalDateTime.now()), new Usuarios(), new Medico(medicoId, "Medico1", "Sexo1", "Direccion1", "Correo1", Timestamp.valueOf(LocalDateTime.now()), Timestamp.valueOf(LocalDateTime.now()), new Usuarios())),
+                new CitaMedica(2L, Timestamp.valueOf(LocalDateTime.now()), new Usuarios(), new Medico(medicoId, "Medico2", "Sexo2", "Direccion2", "Correo2", Timestamp.valueOf(LocalDateTime.now()), Timestamp.valueOf(LocalDateTime.now()), new Usuarios()))
+        );
+
+        when(citaMedicaRepositorio.findByMedico_Id(medicoId)).thenReturn(citasMedicas);
+
+        List<CitaMedica> result = citaMedicaService.getCitasByMedicoId(medicoId);
+
+        assertEquals(2, result.size());
+        assertEquals(medicoId, result.get(0).getMedico().getId());
+        assertEquals(medicoId, result.get(1).getMedico().getId());
+    }
+    
+    @Test
+    void testGetCitasByFecha() {
+        LocalDate fecha = LocalDate.now();
+        LocalDateTime startOfDay = fecha.atStartOfDay();
+        LocalDateTime endOfDay = fecha.atTime(LocalTime.MAX);
+        List<CitaMedica> citasMedicas = Arrays.asList(
+                new CitaMedica(1L, Timestamp.valueOf(LocalDateTime.now()), new Usuarios(), new Medico()),
+                new CitaMedica(2L, Timestamp.valueOf(LocalDateTime.now()), new Usuarios(), new Medico())
+        );
+        when(citaMedicaRepositorio.findByFechaBetween(Timestamp.valueOf(startOfDay), Timestamp.valueOf(endOfDay))).thenReturn(citasMedicas);
+
+        List<CitaMedica> result = citaMedicaService.getCitasByFecha(fecha);
+
+        assertEquals(2, result.size());
     }
 
 }
