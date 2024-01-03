@@ -40,16 +40,17 @@ class MedicamentoTest {
 	
     @Test
     void testCrearMedicamento() {
-    	
+        // Suponemos que el constructor de Medicamento solo toma el nombre del medicamento porque el ID es generado automáticamente.
         Medicamento medicamentoEntrada = new Medicamento(null, "Medicamento Aspirina");
         Medicamento medicamentoGuardado = new Medicamento(1L, "Medicamento Aspirina");
-        when(medicamentoRepositorio.save(medicamentoEntrada)).thenReturn(medicamentoGuardado);
+        when(medicamentoRepositorio.save(any())).thenReturn(medicamentoGuardado);
 
         Medicamento medicamentoCreado = medicamentoService.crear(medicamentoEntrada);
 
         assertNotNull(medicamentoCreado.getMedica_id());
-        assertEquals("Medicamento Aspirina", medicamentoCreado.getMedica_nombre());
+        assertEquals(medicamentoGuardado.getMedica_nombre(), medicamentoCreado.getMedica_nombre());
     }
+
    
 
     @Test

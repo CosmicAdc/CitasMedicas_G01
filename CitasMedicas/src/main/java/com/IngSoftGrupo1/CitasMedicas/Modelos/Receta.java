@@ -44,6 +44,9 @@ public class Receta {
     }
 
     public void setRe_indicaciones(String re_indicaciones) {
+        if (re_indicaciones == null) {
+            throw new IllegalArgumentException("Las indicaciones no pueden ser nulas");
+        }
         this.re_indicaciones = re_indicaciones;
     }
 
